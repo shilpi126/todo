@@ -1,5 +1,7 @@
 import AddTodoForm from "./components/AddTodoForm";
 import Header from "./components/Header";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 import TodoItem from "./components/TodoItem";
 import HomePage from "./pages/HomePage"
 import Signin from "./pages/Signin";
@@ -16,9 +18,27 @@ function App() {
     <BrowserRouter>
         <Header/>
       <Routes>
-      <Route path="/" element={<HomePage/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/login" element={<Signin/>}/>
+        
+      <Route path="/" element={
+        <ProtectedRoute>
+            <HomePage/>
+      </ProtectedRoute>
+      }
+      />
+
+      <Route path="/signup" element={
+      <PublicRoute>
+        <Signup/>
+      </PublicRoute>
+      }
+      />
+
+      <Route path="/login" element={
+      <PublicRoute>
+        <Signin/>
+      </PublicRoute>}
+      />
+
       <Route path='/add-task' element={<AddTodoForm/>}/>
       
       </Routes>

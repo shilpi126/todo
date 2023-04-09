@@ -25,6 +25,7 @@ const Signup = () => {
             console.log(res.data);
             if(res.data.success){
                 
+                
                 console.log(res.data.success);
                 navigate("/login")
             }else{

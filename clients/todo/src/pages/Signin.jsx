@@ -19,10 +19,11 @@ const Signin = () => {
         
         //with proxy
         const res = await axios.post(`${BASE_URL}/api/v1/auth/login`,{email, password});
-        console.log(res.data);
+     
         if(res.data.success){
-            // localStorage.setItem("token", res.data.token);
-            // console.log(res.data.token);
+       
+            localStorage.setItem("token", res.data.token);
+            
             
             navigate("/")
         }else{
