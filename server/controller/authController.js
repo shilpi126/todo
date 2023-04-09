@@ -4,7 +4,7 @@ const { comparePassword, hashPassword } = require("../utils/authHelper.js")
 const userModel = require("../models/userModels")
 const JWT = require("jsonwebtoken")
 
-const SECRET_KEY = "8SDFHBVRT253KKS734";
+const SECRET_KEY = require("../key");
 
 
 const signupController = async (req,res) => {
@@ -100,16 +100,16 @@ const signinController = async(req, res) => {
 
         //token
         const token = await JWT.sign({_id: user._id}, SECRET_KEY, {
-            expiresIn: "7d",
+            expiresIn: "1d",
         });
 
         res.status(200).send({
             success:true,
             message:"login successfully",
             user:{
-               
+                
                 email: user.email,
-               
+                
             },
             token,
         });

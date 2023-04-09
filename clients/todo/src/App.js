@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
         <Header/>
       <Routes>
-        
+
       <Route path="/" element={
         <ProtectedRoute>
             <HomePage/>
@@ -39,7 +39,12 @@ function App() {
       </PublicRoute>}
       />
 
-      <Route path='/add-task' element={<AddTodoForm/>}/>
+      <Route path='/add-task' element={
+        <ProtectedRoute>
+      <AddTodoForm/>
+      </ProtectedRoute>
+      }
+      />
       
       </Routes>
     </BrowserRouter>
